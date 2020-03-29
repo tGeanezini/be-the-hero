@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
 import {
   View,
@@ -39,10 +40,10 @@ export default function Incidents() {
 
     setLoading(true);
 
-    const response = api.get('incidents', { params: { page } });
+    const response = await api.get('incidents', { params: { page } });
 
     setIncidents([...incidents, ...response.data]);
-    setTotal((await response).headers['X-Total-Count']);
+    setTotal((await response).headers['x-total-count']);
     setPage(page + 1);
     setLoading(false);
   }
